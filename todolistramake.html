@@ -129,6 +129,9 @@
         const listodowrapper = document.querySelector('.list-todo');
 
 
+
+
+
         function buildtodo(newtodoitem) {
             const todotemplate = document.querySelector('#todotemplate');
             const todoframent = todotemplate.content.cloneNode(true);
@@ -157,6 +160,7 @@
 
 
 
+
         function addtodo() {
 
 
@@ -164,6 +168,11 @@
                 id: `id-${Math.floor(Math.random() * 1000)}`,
                 value: todoinput.value
             }
+            const todolist = JSON.parse(localStorage.getItem('todolist')) ? JSON.parse(localStorage.getItem('todolist')) : [];
+
+            localStorage.setItem('todolist', JSON.stringify(todolist));
+
+            todolist.push(newtodoitem);
 
             const liElement = buildtodo(newtodoitem);
 
